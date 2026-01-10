@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining | THE NOIRÉ LUXE HOTEL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #0a2342;
+            --secondary-color: #1a936f;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --medium-color: #6c757d;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(10, 35, 66, 0.1);
+            --gradient-primary: linear-gradient(135deg, #0a2342 0%, #1c3b5e 100%);
+            --gradient-secondary: linear-gradient(135deg, #1a936f 0%, #2bb184 100%);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+            padding-top: 0;
+            margin-top: 0;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation - Same as index.html */
+        header {
+            background-color: rgba(10, 35, 66, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            top: 0;
+            left: 0;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow);
+            background-color: rgba(10, 35, 66, 0.98);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--light-color);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: var(--light-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(10, 35, 66, 0.85), rgba(10, 35, 66, 0.8)), 
+                        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+            padding-top: 90px;
+        }
+        
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .page-hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .page-hero h1 span {
+            color: var(--accent-color);
+        }
+        
+        .page-hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(26, 147, 111, 0.3);
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #2bb184 0%, #1a936f 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 147, 111, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            display: inline-block;
+            position: relative;
+            color: var(--primary-color);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Menu Categories Navigation */
+        .menu-categories {
+            position: sticky;
+            top: 90px;
+            background: white;
+            z-index: 99;
+            padding: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .categories-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-btn {
+            padding: 10px 25px;
+            background: var(--light-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            color: var(--text-light);
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+        
+        /* Menu Section */
+        .menu-section {
+            padding: 50px 0 100px;
+            background-color: white;
+        }
+        
+        .menu-category-section {
+            margin-bottom: 80px;
+        }
+        
+        .menu-category-title {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(10, 35, 66, 0.1);
+        }
+        
+        .menu-item-img {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-header h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .menu-item-price {
+            font-size: 18px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-left: 15px;
+        }
+        
+        .menu-item-desc {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .menu-tag {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: var(--light-color);
+            color: var(--text-light);
+        }
+        
+        .menu-tag.halal {
+            background: #e8f5e9;
+            color: var(--secondary-color);
+        }
+        
+        .menu-tag.spicy {
+            background: #ffebee;
+            color: #e53935;
+        }
+        
+        .menu-tag.vegetarian {
+            background: #e8f5e9;
+            color: #43a047;
+        }
+        
+        .menu-tag.recommended {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        /* Restaurant Info */
+        .restaurant-info {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+        }
+        
+        .restaurant-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .restaurant-text h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .restaurant-hours {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .restaurant-hours h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .restaurant-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .restaurant-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Footer - Same as index.html */
+        footer {
+            background: var(--gradient-primary);
+            color: var(--light-color);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 35px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .restaurant-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero {
+                padding-top: 80px;
+            }
+            
+            .menu-categories {
+                top: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .menu-item {
+                flex-direction: column;
+            }
+            
+            .menu-item-img {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .categories-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+            
+            .page-hero {
+                padding-top: 70px;
+                height: 50vh;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .menu-categories {
+                top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - Same as index.html -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">THE NOIRÉ <span>LUXE</span> HOTEL</a>
+            
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="rooms.html">Rooms & Suites</a></li>
+                    <li><a href="menu.html" class="active">Dining</a></li>
+                    <li><a href="index.html#team">Our Team</a></li>
+                    <li><a href="index.html#location">Location</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Halal Food & <span>Beverage</span></h1>
+                <p>Experience exquisite halal-certified cuisine at Noiré Luxe Restaurant. Our menu features a fusion of international flavors with traditional Malaysian influences, all prepared with the finest ingredients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Categories Navigation -->
+    <section class="menu-categories">
+        <div class="container">
+            <div class="categories-container">
+                <button class="category-btn active" data-category="starters">Starters & Appetizers</button>
+                <button class="category-btn" data-category="seafood">Seafood & Ocean Delights</button>
+                <button class="category-btn" data-category="meat">Grill & Meat Selections</button>
+                <button class="category-btn" data-category="desserts">Desserts & Sweet Indulgences</button>
+                <button class="category-btn" data-category="mocktails">Signature Mocktails</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section">
+        <div class="container">
+            <!-- Starters & Appetizers -->
+            <div class="menu-category-section" id="starters">
+                <div class="section-title">
+                    <h2>Signature Starters & Appetizers</h2>
+                    <p>Begin your culinary journey with our exquisite starters</p>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Truffle Mushroom Velouté">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Truffle Mushroom Velouté</h3>
+                                <div class="menu-item-price">RM 38</div>
+                            </div>
+                            <p class="menu-item-desc">Creamy mushroom soup with black truffle essence, served with truffle oil drizzle and artisan bread.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Grilled Halloumi & Heirloom Tomato Salad">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Grilled Halloumi & Heirloom Tomato Salad</h3>
+                                <div class="menu-item-price">RM 42</div>
+                            </div>
+                            <p class="menu-item-desc">With balsamic glaze, microgreens, and pine nuts. Served with warm pita bread.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="scaloops.jpg" alt="Seared Scallops">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Seared Halal Scallops</h3>
+                                <div class="menu-item-price">RM 56</div>
+                            </div>
+                            <p class="menu-item-desc">Caramelized with citrus foam (halal-certified seafood), served with pea puree and crispy pancetta.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">CHEF'S RECOMMENDATION</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://urbanfarmie.com/wp-content/uploads/Hummus-Bowl-Square-Shot.jpg" alt="Falafel & Hummus">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Falafel & Hummus Trio</h3>
+                                <div class="menu-item-price">RM 35</div>
+                            </div>
+                            <p class="menu-item-desc">Crispy falafel served with three types of hummus: classic, roasted red pepper, and beetroot.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                                <span class="menu-tag vegan">VEGAN OPTION</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seafood & Ocean Delights -->
+            <div class="menu-category-section" id="seafood">
+                <div class="section-title">
+                    <h2>Seafood & Ocean Delights</h2>
+                    <p>Fresh halal-certified seafood from sustainable sources</p>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://www.billyparisi.com/wp-content/uploads/2022/03/sea-bass-1.jpg" alt="Pan-Seared Chilean Sea Bass">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Pan-Seared Chilean Sea Bass</h3>
+                                <div class="menu-item-price">RM 125</div>
+                            </div>
+                            <p class="menu-item-desc">Lemon beurre blanc, asparagus, saffron risotto. Served with seasonal vegetables.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">CHEF'S RECOMMENDATION</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://zenaskitchen.com/wp-content/uploads/2022/01/King-Prawn-Risotto.jpg" alt="King Prawn Risotto">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>King Prawn Risotto</h3>
+                                <div class="menu-item-price">RM 98</div>
+                            </div>
+                            <p class="menu-item-desc">Saffron-infused arborio rice, garlic butter prawns, parmesan, and fresh herbs.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://bellyrumbles.com/wp-content/uploads/2021/12/how-to-make-a-seafood-platter.jpg" alt="Seafood Platter">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Seafood Platter (for 2)</h3>
+                                <div class="menu-item-price">RM 280</div>
+                            </div>
+                            <p class="menu-item-desc">Lobster, prawns, oysters, and seasonal halal seafood served with garlic butter and lemon.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">CHEF'S RECOMMENDATION</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grill & Meat Selections -->
+            <div class="menu-category-section" id="meat">
+                <div class="section-title">
+                    <h2>Grill & Meat Selections (Halal-certified)</h2>
+                    <p>Premium cuts prepared to perfection</p>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wagyu Beef Tenderloin">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Wagyu Beef Tenderloin</h3>
+                                <div class="menu-item-price">RM 198</div>
+                            </div>
+                            <p class="menu-item-desc">Halal-certified, truffle mashed potatoes, seasonal vegetables, red wine reduction.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">SIGNATURE DISH</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://www.recipetineats.com/uploads/2021/03/Lamb-Rack-Main.jpg" alt="Australian Rack of Lamb">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Australian Rack of Lamb</h3>
+                                <div class="menu-item-price">RM 165</div>
+                            </div>
+                            <p class="menu-item-desc">Halal, rosemary jus, ratatouille, roasted baby potatoes, mint gel.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">CHEF'S RECOMMENDATION</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chicken_supreme-c32d56d.jpg" alt="Chicken Supreme">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Chicken Supreme</h3>
+                                <div class="menu-item-price">RM 78</div>
+                            </div>
+                            <p class="menu-item-desc">Herb-marinated halal chicken, garlic mashed potatoes, seasonal veggies, mushroom cream sauce.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desserts Section -->
+            <div class="menu-category-section" id="desserts">
+                <div class="section-title">
+                    <h2>Desserts & Sweet Indulgences</h2>
+                    <p>Perfect endings to your dining experience</p>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1989&q=80" alt="Chocolate Lava Cake">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Chocolate Lava Cake</h3>
+                                <div class="menu-item-price">RM 32</div>
+                            </div>
+                            <p class="menu-item-desc">Warm chocolate cake with molten center, served with vanilla bean ice cream and berry coulis.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/2014_0531_Cr%C3%A8me_br%C3%BBl%C3%A9e_Doi_Mae_Salong_%28cropped%29.jpg" alt="Crème Brûlée">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Crème Brûlée</h3>
+                                <div class="menu-item-price">RM 28</div>
+                            </div>
+                            <p class="menu-item-desc">Classic vanilla custard with caramelized sugar crust, served with fresh berries.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://shoplineimg.com/60f55272ed3d3c001677102d/67ee53705347b2000ae2e197/800x.jpg?" alt="Tiramisu Royale">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Tiramisu Royale</h3>
+                                <div class="menu-item-price">RM 35</div>
+                            </div>
+                            <p class="menu-item-desc">Alcohol-free, espresso-soaked layers, mascarpone cream, dusted with cocoa powder.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag vegetarian">VEGETARIAN</span>
+                                <span class="menu-tag recommended">SIGNATURE DESSERT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Signature Mocktails -->
+            <div class="menu-category-section" id="mocktails">
+                <div class="section-title">
+                    <h2>Signature Mocktails & Non-Alcoholic Beverages</h2>
+                    <p>Artisanal drinks crafted by our expert mixologists</p>
+                </div>
+                
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="sunset.jpg" alt="Golden Sunset Mocktail">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Golden Sunset Mocktail</h3>
+                                <div class="menu-item-price">RM 24</div>
+                            </div>
+                            <p class="menu-item-desc">Sparkling apple cider, elderflower, citrus, and a hint of ginger. Served in a champagne flute.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                                <span class="menu-tag recommended">BESTSELLER</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://www.julieseatsandtreats.com/wp-content/uploads/2021/05/Ocean-Breeze-Square-750x750.jpg" alt="Ocean Breeze">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Noiré Breeze</h3>
+                                <div class="menu-item-price">RM 22</div>
+                            </div>
+                            <p class="menu-item-desc">Mixed berries, mint, lemonade, and soda water. Refreshing and vibrant.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="menu-item-img">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5bcccf8b9b7d15579477a125/90b3a927-bad4-4c64-bd2f-2f62ea5424a2/Virgin+Mojito.jpg" alt="Virgin Mojito">
+                        </div>
+                        <div class="menu-item-content">
+                            <div class="menu-item-header">
+                                <h3>Virgin Mojito</h3>
+                                <div class="menu-item-price">RM 18</div>
+                            </div>
+                            <p class="menu-item-desc">Fresh mint, lime, sugar, and soda water. Classic tropical refreshment.</p>
+                            <div class="menu-item-tags">
+                                <span class="menu-tag halal">HALAL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Info -->
+    <section class="restaurant-info">
+        <div class="container">
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <h2>Noiré Luxe Restaurant</h2>
+                    <p>Our award-winning restaurant offers an exquisite dining experience with panoramic views of Kuching. Our culinary team, led by Head Chef Fatima Abdullah, creates innovative halal cuisine using locally sourced ingredients and traditional techniques.</p>
+                    <p>We offer both indoor dining with elegant decor and al fresco options on our terrace. Private dining rooms are available for special occasions and business meetings.</p>
+                    
+                    <div class="restaurant-hours">
+                        <h3>Opening Hours</h3>
+                        <div class="hours-item">
+                            <span>Breakfast</span>
+                            <span>6:30 AM - 10:30 AM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Lunch</span>
+                            <span>12:00 PM - 3:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Dinner</span>
+                            <span>6:00 PM - 11:00 PM</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Weekend Brunch</span>
+                            <span>11:00 AM - 3:00 PM</span>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <a href="tel:+60821234567" class="btn" style="margin-right: 15px;"><i class="fas fa-phone"></i> Make Reservation</a>
+                        <a href="index.html#location" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Find Us</a>
+                    </div>
+                </div>
+                
+                <div class="restaurant-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Noiré Luxe Restaurant">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Same as index.html -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>THE NOIRÉ LUXE HOTEL</h3>
+                    <p>Experience luxury redefined at our exclusive hotel in Kuching, Sarawak. With premium amenities, exquisite halal dining, and breathtaking views.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#features">Hotel Features</a></li>
+                        <li><a href="rooms.html">Rooms & Suites</a></li>
+                        <li><a href="menu.html">Dining</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="index.html#location">Location</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> No. 2, Jalan Padungan, 93100 Kuching, Sarawak</li>
+                        <li><i class="fas fa-phone"></i> +60 82-123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@noireluxehotel.com</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Reception</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Special Features</h3>
+                    <ul>
+                        <li>20 Levels with exclusive floors 15-20</li>
+                        <li>Pool, Gym, Spa & Free Parking</li>
+                        <li>Free WiFi & Breakfast Included</li>
+                        <li>Ballroom Event Reservation</li>
+                        <li>Exquisite Halal Dining</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 THE NOIRÉ LUXE HOTEL. All Rights Reserved. | Designed with Luxury in Mind</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle - Same as index.html
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Header scroll effect - Same as index.html
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Menu Category Filtering
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const menuSections = document.querySelectorAll('.menu-category-section');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.getAttribute('data-category');
+                
+                // Scroll to the selected category
+                const targetSection = document.getElementById(category);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 150,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight active category on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            menuSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            categoryButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-category') === current) {
+                    button.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

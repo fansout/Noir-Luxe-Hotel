@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites | THE NOIRÉ LUXE HOTEL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #0a2342;
+            --secondary-color: #1a936f;
+            --accent-color: #d4af37;
+            --light-color: #f8f9fa;
+            --medium-color: #6c757d;
+            --text-dark: #212529;
+            --text-light: #495057;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(10, 35, 66, 0.1);
+            --gradient-primary: linear-gradient(135deg, #0a2342 0%, #1c3b5e 100%);
+            --gradient-secondary: linear-gradient(135deg, #1a936f 0%, #2bb184 100%);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+            padding-top: 0;
+            margin-top: 0;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation - Same as index.html */
+        header {
+            background-color: rgba(10, 35, 66, 0.95);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            top: 0;
+            left: 0;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: var(--shadow);
+            background-color: rgba(10, 35, 66, 0.98);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--light-color);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a.active {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            color: var(--light-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(10, 35, 66, 0.85), rgba(10, 35, 66, 0.8)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+            padding-top: 90px;
+        }
+        
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .page-hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        .page-hero h1 span {
+            color: var(--accent-color);
+        }
+        
+        .page-hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(26, 147, 111, 0.3);
+        }
+        
+        .btn:hover {
+            background: linear-gradient(135deg, #2bb184 0%, #1a936f 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 147, 111, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-secondary {
+            background: var(--gradient-primary);
+            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #1c3b5e 0%, #0a2342 100%);
+            box-shadow: 0 8px 20px rgba(10, 35, 66, 0.4);
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            display: inline-block;
+            position: relative;
+            color: var(--primary-color);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* Rooms Detail Section */
+        .rooms-detail {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .room-detail-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .room-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .main-room-image {
+            grid-column: span 2;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .main-room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .main-room-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .room-thumb {
+            height: 140px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .room-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .room-thumb:hover img {
+            transform: scale(1.1);
+        }
+        
+        .room-info h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .room-price {
+            font-size: 28px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .room-price span {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+        
+        .room-features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .room-feature-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .room-feature-item i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .booking-form-container {
+            background: var(--light-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+        }
+        
+        .booking-form-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(26, 147, 111, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        /* All Rooms Section */
+        .all-rooms {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, white 0%, #f8f9fa 100%);
+        }
+        
+        .rooms-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-secondary);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .room-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(10, 35, 66, 0.15);
+        }
+        
+        .room-card-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .room-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .room-card:hover .room-card-img img {
+            transform: scale(1.1);
+        }
+        
+        .room-card-content {
+            padding: 25px;
+        }
+        
+        .room-card-content h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .room-card-price {
+            font-size: 22px;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .room-card-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .room-card-feature {
+            text-align: center;
+        }
+        
+        .room-card-feature i {
+            color: var(--secondary-color);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .room-card-feature span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        /* Amenities Section */
+        .amenities {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .amenity-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--light-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .amenity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(10, 35, 66, 0.1);
+        }
+        
+        .amenity-item i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        /* Footer - Same as index.html */
+        footer {
+            background: var(--gradient-primary);
+            color: var(--light-color);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 35px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .room-detail-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero {
+                padding-top: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .room-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-room-image {
+                grid-column: span 1;
+            }
+            
+            .page-hero {
+                padding-top: 70px;
+                height: 50vh;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - Same as index.html -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">THE NOIRÉ <span>LUXE</span> HOTEL</a>
+            
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="rooms.html" class="active">Rooms & Suites</a></li>
+                    <li><a href="menu.html">Dining</a></li>
+                    <li><a href="index.html#team">Our Team</a></li>
+                    <li><a href="index.html#location">Location</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Rooms & <span>Suites</span></h1>
+                <p>Experience unparalleled luxury in our meticulously designed accommodations. Each room offers breathtaking views, premium amenities, and the highest standard of comfort.</p>
+                <a href="#single" class="btn">Explore Our Rooms</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Room Detail -->
+    <section class="rooms-detail" id="single">
+        <div class="container">
+            <div class="section-title">
+                <h2>Single Room</h2>
+                <p>Perfect for solo travelers seeking comfort and luxury</p>
+            </div>
+            
+            <div class="room-detail-content">
+                <div class="room-images">
+                    <div class="main-room-image">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Single Room">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Single Room Bathroom">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Single Room View">
+                    </div>
+                </div>
+                
+                <div class="room-info">
+                    <h2>Single Room</h2>
+                    <div class="room-price">RM 450 <span>/ night</span></div>
+                    <p>Our Single Room is designed for the solo traveler who appreciates luxury and comfort. Featuring a king-sized bed, modern amenities, and a stylish en-suite bathroom, this room offers everything you need for a perfect stay.</p>
+                    
+                    <div class="room-features-list">
+                        <div class="room-feature-item">
+                            <i class="fas fa-user"></i>
+                            <span>1-6 Guests</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-expand"></i>
+                            <span>35 m²</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-tv"></i>
+                            <span>Smart TV</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>Mini Bar</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#booking" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="booking-form-container" id="booking">
+                <h3>Book This Room</h3>
+                <form id="singleRoomBooking">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin-single">Check-in Date</label>
+                            <input type="date" id="checkin-single" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-single">Check-out Date</label>
+                            <input type="date" id="checkout-single" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests-single">Number of Guests</label>
+                            <select id="guests-single" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name-single">Full Name</label>
+                            <input type="text" id="name-single" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-single">Email Address</label>
+                            <input type="email" id="email-single" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-single">Phone Number</label>
+                            <input type="tel" id="phone-single" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests-single">Special Requests</label>
+                        <textarea id="special-requests-single" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premier Room Detail -->
+    <section class="rooms-detail" id="premier" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premier Room</h2>
+                <p>Spacious accommodation with enhanced city views</p>
+            </div>
+            
+            <div class="room-detail-content">
+                <div class="room-info">
+                    <h2>Premier Room</h2>
+                    <div class="room-price">RM 650 <span>/ night</span></div>
+                    <p>Our Premier Room offers additional space with a separate seating area, perfect for relaxing after a day of exploring Kuching. Enjoy enhanced city views and upgraded amenities for a truly luxurious experience.</p>
+                    
+                    <div class="room-features-list">
+                        <div class="room-feature-item">
+                            <i class="fas fa-user"></i>
+                            <span>1-6 Guests</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-expand"></i>
+                            <span>45 m²</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-tv"></i>
+                            <span>Smart TV</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>Mini Bar</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-couch"></i>
+                            <span>Seating Area</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-city"></i>
+                            <span>City View</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#booking-premier" class="btn">Book Now</a>
+                </div>
+                
+                <div class="room-images">
+                    <div class="main-room-image">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Premier Room">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Premier Room Bathroom">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Premier Room View">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="booking-form-container" id="booking-premier">
+                <h3>Book This Room</h3>
+                <form id="premierRoomBooking">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin-premier">Check-in Date</label>
+                            <input type="date" id="checkin-premier" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-premier">Check-out Date</label>
+                            <input type="date" id="checkout-premier" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests-premier">Number of Guests</label>
+                            <select id="guests-premier" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name-premier">Full Name</label>
+                            <input type="text" id="name-premier" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-premier">Email Address</label>
+                            <input type="email" id="email-premier" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-premier">Phone Number</label>
+                            <input type="tel" id="phone-premier" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests-premier">Special Requests</label>
+                        <textarea id="special-requests-premier" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deluxe Room Detail -->
+    <section class="rooms-detail" id="deluxe">
+        <div class="container">
+            <div class="section-title">
+                <h2>Deluxe Room</h2>
+                <p>Luxurious accommodation with balcony and premium amenities</p>
+            </div>
+            
+            <div class="room-detail-content">
+                <div class="room-images">
+                    <div class="main-room-image">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Deluxe Room">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Deluxe Room Bathroom">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Deluxe Room Balcony">
+                    </div>
+                </div>
+                
+                <div class="room-info">
+                    <h2>Deluxe Room</h2>
+                    <div class="room-price">RM 850 <span>/ night</span></div>
+                    <p>Our Deluxe Room offers the ultimate in luxury with a private balcony, panoramic views, and premium amenities. Featuring a spacious layout, elegant furnishings, and exclusive access to our executive lounge.</p>
+                    
+                    <div class="room-features-list">
+                        <div class="room-feature-item">
+                            <i class="fas fa-user"></i>
+                            <span>1-6 Guests</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-expand"></i>
+                            <span>55 m²</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-tv"></i>
+                            <span>Smart TV</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>Premium Mini Bar</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Private Balcony</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Executive Lounge Access</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#booking-deluxe" class="btn">Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="booking-form-container" id="booking-deluxe">
+                <h3>Book This Room</h3>
+                <form id="deluxeRoomBooking">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin-deluxe">Check-in Date</label>
+                            <input type="date" id="checkin-deluxe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-deluxe">Check-out Date</label>
+                            <input type="date" id="checkout-deluxe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests-deluxe">Number of Guests</label>
+                            <select id="guests-deluxe" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name-deluxe">Full Name</label>
+                            <input type="text" id="name-deluxe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-deluxe">Email Address</label>
+                            <input type="email" id="email-deluxe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-deluxe">Phone Number</label>
+                            <input type="tel" id="phone-deluxe" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests-deluxe">Special Requests</label>
+                        <textarea id="special-requests-deluxe" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Suite Detail -->
+    <section class="rooms-detail" id="premium" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Suite</h2>
+                <p>Ultimate luxury with separate living room and butler service</p>
+            </div>
+            
+            <div class="room-detail-content">
+                <div class="room-info">
+                    <h2>Premium Suite</h2>
+                    <div class="room-price">RM 1,200 <span>/ night</span></div>
+                    <p>Our most exclusive offering, the Premium Suite features a separate living room, dining area, and panoramic city views. Includes personalized butler service, exclusive amenities, and access to all hotel facilities.</p>
+                    
+                    <div class="room-features-list">
+                        <div class="room-feature-item">
+                            <i class="fas fa-user"></i>
+                            <span>1-6 Guests</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-bed"></i>
+                            <span>King Bed</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-expand"></i>
+                            <span>85 m²</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Free WiFi</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-tv"></i>
+                            <span>Smart TV</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-wine-glass"></i>
+                            <span>Full Bar</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-couch"></i>
+                            <span>Separate Living Room</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Personal Butler</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Dining Area</span>
+                        </div>
+                        <div class="room-feature-item">
+                            <i class="fas fa-spa"></i>
+                            <span>Complimentary Spa Access</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#booking-premium" class="btn">Book Now</a>
+                </div>
+                
+                <div class="room-images">
+                    <div class="main-room-image">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Premium Suite">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80" alt="Premium Suite Bathroom">
+                    </div>
+                    <div class="room-thumb">
+                        <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Premium Suite Living Room">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Form -->
+            <div class="booking-form-container" id="booking-premium">
+                <h3>Book This Suite</h3>
+                <form id="premiumRoomBooking">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin-premium">Check-in Date</label>
+                            <input type="date" id="checkin-premium" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-premium">Check-out Date</label>
+                            <input type="date" id="checkout-premium" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests-premium">Number of Guests</label>
+                            <select id="guests-premium" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name-premium">Full Name</label>
+                            <input type="text" id="name-premium" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-premium">Email Address</label>
+                            <input type="email" id="email-premium" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-premium">Phone Number</label>
+                            <input type="tel" id="phone-premium" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requests-premium">Special Requests</label>
+                        <textarea id="special-requests-premium" rows="3"></textarea>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn">Complete Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Rooms Section -->
+    <section class="all-rooms">
+        <div class="container">
+            <div class="section-title">
+                <h2>All Rooms & Suites</h2>
+                <p>Choose from our selection of luxurious accommodations</p>
+            </div>
+            
+            <div class="rooms-filter">
+                <button class="filter-btn active" data-filter="all">All Rooms</button>
+                <button class="filter-btn" data-filter="single">Single</button>
+                <button class="filter-btn" data-filter="premier">Premier</button>
+                <button class="filter-btn" data-filter="deluxe">Deluxe</button>
+                <button class="filter-btn" data-filter="premium">Premium</button>
+            </div>
+            
+            <div class="rooms-grid">
+                <!-- Single Room Card -->
+                <div class="room-card" data-category="single">
+                    <div class="room-card-img">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Single Room">
+                    </div>
+                    <div class="room-card-content">
+                        <h3>Single Room</h3>
+                        <div class="room-card-price">RM 450 / night</div>
+                        <p>Perfect for solo travelers with a comfortable king-sized bed and essential amenities.</p>
+                        
+                        <div class="room-card-features">
+                            <div class="room-card-feature">
+                                <i class="fas fa-user"></i>
+                                <span>1-6 Guests</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>King Bed</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-expand"></i>
+                                <span>35 m²</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#single" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Premier Room Card -->
+                <div class="room-card" data-category="premier">
+                    <div class="room-card-img">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Premier Room">
+                    </div>
+                    <div class="room-card-content">
+                        <h3>Premier Room</h3>
+                        <div class="room-card-price">RM 650 / night</div>
+                        <p>Spacious room with a separate seating area and enhanced city views.</p>
+                        
+                        <div class="room-card-features">
+                            <div class="room-card-feature">
+                                <i class="fas fa-user"></i>
+                                <span>1-6 Guests</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>King Bed</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-expand"></i>
+                                <span>45 m²</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#premier" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Deluxe Room Card -->
+                <div class="room-card" data-category="deluxe">
+                    <div class="room-card-img">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Deluxe Room">
+                    </div>
+                    <div class="room-card-content">
+                        <h3>Deluxe Room</h3>
+                        <div class="room-card-price">RM 850 / night</div>
+                        <p>Luxurious accommodation with a balcony, premium amenities, and panoramic views.</p>
+                        
+                        <div class="room-card-features">
+                            <div class="room-card-feature">
+                                <i class="fas fa-user"></i>
+                                <span>1-6 Guests</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>King Bed</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-expand"></i>
+                                <span>55 m²</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#deluxe" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Premium Suite Card -->
+                <div class="room-card" data-category="premium">
+                    <div class="room-card-img">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Premium Suite">
+                    </div>
+                    <div class="room-card-content">
+                        <h3>Premium Suite</h3>
+                        <div class="room-card-price">RM 1,200 / night</div>
+                        <p>Our most exclusive offering with a separate living room, dining area, and butler service.</p>
+                        
+                        <div class="room-card-features">
+                            <div class="room-card-feature">
+                                <i class="fas fa-user"></i>
+                                <span>1-6 Guests</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-bed"></i>
+                                <span>King Bed</span>
+                            </div>
+                            <div class="room-card-feature">
+                                <i class="fas fa-expand"></i>
+                                <span>85 m²</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#premium" class="btn btn-secondary" style="width: 100%;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="amenities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Room Amenities</h2>
+                <p>Every room includes premium amenities for your comfort</p>
+            </div>
+            
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <i class="fas fa-wifi"></i>
+                    <h3>Free High-Speed WiFi</h3>
+                    <p>Stay connected with complimentary high-speed internet access</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-tv"></i>
+                    <h3>Smart TV</h3>
+                    <p>55-inch smart TV with streaming services and international channels</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-wine-glass"></i>
+                    <h3>Mini Bar</h3>
+                    <p>Well-stocked mini bar with complimentary water and premium snacks</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Air Conditioning</h3>
+                    <p>Individual climate control for your comfort</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-shower"></i>
+                    <h3>Rain Shower</h3>
+                    <p>Luxurious rain shower with premium toiletries</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Room Service</h3>
+                    <p>24-hour room service from our halal restaurant</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-lock"></i>
+                    <h3>Safe</h3>
+                    <p>In-room digital safe for your valuables</p>
+                </div>
+                
+                <div class="amenity-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Laundry Service</h3>
+                    <p>Same-day laundry and dry cleaning service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready for a Luxurious Experience?</h2>
+            <p>Book your stay at THE NOIRÉ LUXE HOTEL and experience unparalleled luxury in the heart of Kuching.</p>
+            <a href="#booking" class="btn" style="margin-right: 15px;">Book Now</a>
+            <a href="menu.html" class="btn btn-outline">View Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Footer - Same as index.html -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>THE NOIRÉ LUXE HOTEL</h3>
+                    <p>Experience luxury redefined at our exclusive hotel in Kuching, Sarawak. With premium amenities, exquisite halal dining, and breathtaking views.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#features">Hotel Features</a></li>
+                        <li><a href="rooms.html">Rooms & Suites</a></li>
+                        <li><a href="menu.html">Dining</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="index.html#location">Location</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> No. 2, Jalan Padungan, 93100 Kuching, Sarawak</li>
+                        <li><i class="fas fa-phone"></i> +60 82-123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@noireluxehotel.com</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Reception</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Special Features</h3>
+                    <ul>
+                        <li>20 Levels with exclusive floors 15-20</li>
+                        <li>Pool, Gym, Spa & Free Parking</li>
+                        <li>Free WiFi & Breakfast Included</li>
+                        <li>Ballroom Event Reservation</li>
+                        <li>Exquisite Halal Dining</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 THE NOIRÉ LUXE HOTEL. All Rights Reserved. | Designed with Luxury in Mind</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle - Same as index.html
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Header scroll effect - Same as index.html
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Room Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const roomCards = document.querySelectorAll('.room-card');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                roomCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Booking Form Submission
+        const bookingForms = document.querySelectorAll('form[id$="Booking"]');
+        
+        bookingForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formId = form.id;
+                let roomType = '';
+                
+                if (formId.includes('single')) roomType = 'Single Room';
+                else if (formId.includes('premier')) roomType = 'Premier Room';
+                else if (formId.includes('deluxe')) roomType = 'Deluxe Room';
+                else if (formId.includes('premium')) roomType = 'Premium Suite';
+                
+                const name = form.querySelector('input[type="text"]').value;
+                const checkin = form.querySelector('input[type="date"]').value;
+                
+                alert(`Thank you ${name}! Your booking for the ${roomType} from ${checkin} has been received. Our team will contact you shortly to confirm.`);
+                
+                // Reset form
+                form.reset();
+            });
+        });
+        
+        // Set minimum date for check-in to today
+        const today = new Date().toISOString().split('T')[0];
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+        
+        dateInputs.forEach(input => {
+            if (input.id.includes('checkin')) {
+                input.min = today;
+                
+                // Find corresponding checkout input
+                const checkoutId = input.id.replace('checkin', 'checkout');
+                const checkoutInput = document.getElementById(checkoutId);
+                
+                if (checkoutInput) {
+                    input.addEventListener('change', function() {
+                        if (input.value) {
+                            checkoutInput.min = input.value;
+                        }
+                    });
+                }
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
