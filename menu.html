@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dining | THE NOIRÉ LUXE HOTEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
         }
         
         :root {
-            --primary-color: #2075dd;
+            --primary-color: #0a2342;
             --secondary-color: #1a936f;
             --accent-color: #d4af37;
             --light-color: #f8f9fa;
@@ -27,11 +27,6 @@
             --gradient-secondary: linear-gradient(135deg, #1a936f 0%, #2bb184 100%);
         }
         
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-        
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
@@ -40,8 +35,6 @@
             overflow-x: hidden;
             padding-top: 0;
             margin-top: 0;
-            -webkit-text-size-adjust: 100%;
-            -webkit-tap-highlight-color: transparent;
         }
         
         h1, h2, h3, h4, h5 {
@@ -51,13 +44,13 @@
         }
         
         .container {
-            width: 92%;
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
         
-        /* Header & Navigation */
+        /* Header & Navigation - Same as main.html */
         header {
             background-color: rgba(10, 35, 66, 0.95);
             position: fixed;
@@ -67,8 +60,6 @@
             transition: var(--transition);
             top: 0;
             left: 0;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
         
         header.scrolled {
@@ -86,11 +77,10 @@
         .logo {
             color: var(--light-color);
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(20px, 5vw, 28px);
+            font-size: 28px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-decoration: none;
-            white-space: nowrap;
         }
         
         .logo span {
@@ -103,17 +93,16 @@
         }
         
         nav ul li {
-            margin-left: clamp(15px, 2vw, 30px);
+            margin-left: 30px;
         }
         
         nav ul li a {
             color: var(--light-color);
             text-decoration: none;
-            font-size: clamp(14px, 1.8vw, 16px);
+            font-size: 16px;
             font-weight: 500;
             transition: var(--transition);
             position: relative;
-            padding: 5px 0;
         }
         
         nav ul li a:hover {
@@ -144,34 +133,11 @@
             color: var(--light-color);
             font-size: 24px;
             cursor: pointer;
-            padding: 5px;
-            z-index: 1001;
-        }
-        
-        /* Mobile Navigation Overlay */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 35, 66, 0.95);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .mobile-nav-overlay.active {
-            display: block;
-            opacity: 1;
         }
         
         /* Page Hero */
         .page-hero {
             height: 60vh;
-            min-height: 400px;
-            max-height: 700px;
             background: linear-gradient(rgba(10, 35, 66, 0.85), rgba(10, 35, 66, 0.8)), 
                         url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
@@ -190,10 +156,9 @@
         }
         
         .page-hero h1 {
-            font-size: clamp(32px, 6vw, 50px);
-            margin-bottom: clamp(15px, 3vw, 20px);
-            letter-spacing: clamp(1px, 2vw, 2px);
-            line-height: 1.2;
+            font-size: 50px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
         
         .page-hero h1 span {
@@ -201,31 +166,27 @@
         }
         
         .page-hero p {
-            font-size: clamp(16px, 2.5vw, 18px);
+            font-size: 18px;
             margin-bottom: 30px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
         }
         
         .btn {
             display: inline-block;
             background: var(--gradient-secondary);
             color: white;
-            padding: clamp(12px, 3vw, 15px) clamp(20px, 4vw, 30px);
+            padding: 12px 30px;
             border-radius: 3px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            font-size: clamp(14px, 2vw, 16px);
+            font-size: 16px;
             box-shadow: 0 5px 15px rgba(26, 147, 111, 0.3);
-            text-align: center;
-            white-space: nowrap;
-            touch-action: manipulation;
         }
         
         .btn:hover {
@@ -246,45 +207,25 @@
             color: var(--primary-color);
         }
         
-        /* Touch-friendly improvements */
-        @media (hover: none) and (pointer: coarse) {
-            .btn:hover {
-                transform: none;
-            }
-            
-            .btn:active {
-                transform: translateY(-3px);
-            }
-            
-            .menu-item:hover {
-                transform: none;
-            }
-            
-            .menu-item:active {
-                transform: translateY(-5px);
-            }
-        }
-        
         /* Section Title */
         .section-title {
             text-align: center;
-            margin-bottom: clamp(30px, 6vw, 50px);
+            margin-bottom: 50px;
             position: relative;
-            padding-top: clamp(40px, 8vw, 80px);
+            padding-top: 80px;
         }
         
         .section-title h2 {
-            font-size: clamp(28px, 6vw, 40px);
+            font-size: 40px;
             display: inline-block;
             position: relative;
             color: var(--primary-color);
-            line-height: 1.2;
         }
         
         .section-title h2::after {
             content: '';
             position: absolute;
-            width: clamp(50px, 15vw, 70px);
+            width: 70px;
             height: 3px;
             background: var(--accent-color);
             bottom: -10px;
@@ -296,35 +237,27 @@
             color: var(--text-light);
             max-width: 700px;
             margin: 20px auto 0;
-            font-size: clamp(14px, 2vw, 16px);
-            padding: 0 10px;
         }
         
         /* Menu Categories Navigation */
         .menu-categories {
             position: sticky;
-            top: 80px;
+            top: 90px;
             background: white;
             z-index: 99;
-            padding: 15px 0;
+            padding: 20px 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
         .categories-container {
             display: flex;
-            overflow-x: auto;
-            padding: 10px 0;
-            gap: clamp(8px, 2vw, 10px);
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        
-        .categories-container::-webkit-scrollbar {
-            display: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .category-btn {
-            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 25px);
+            padding: 10px 25px;
             background: var(--light-color);
             border: none;
             border-radius: 4px;
@@ -332,10 +265,6 @@
             transition: var(--transition);
             font-weight: 500;
             color: var(--text-light);
-            font-size: clamp(13px, 2vw, 14px);
-            white-space: nowrap;
-            flex-shrink: 0;
-            touch-action: manipulation;
         }
         
         .category-btn:hover,
@@ -346,26 +275,26 @@
         
         /* Menu Section */
         .menu-section {
-            padding: clamp(30px, 6vw, 50px) 0 clamp(50px, 8vw, 100px);
+            padding: 50px 0 100px;
             background-color: white;
         }
         
         .menu-category-section {
-            margin-bottom: clamp(40px, 8vw, 80px);
+            margin-bottom: 80px;
         }
         
         .menu-category-title {
-            font-size: clamp(24px, 5vw, 32px);
+            font-size: 32px;
             color: var(--primary-color);
-            margin-bottom: clamp(20px, 4vw, 30px);
+            margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 2px solid var(--accent-color);
         }
         
         .menu-items {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
-            gap: clamp(20px, 4vw, 30px);
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
         .menu-item {
@@ -375,7 +304,6 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
-            flex-direction: column;
         }
         
         .menu-item:hover {
@@ -384,8 +312,9 @@
         }
         
         .menu-item-img {
-            width: 100%;
-            height: clamp(150px, 25vw, 200px);
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
             overflow: hidden;
         }
         
@@ -401,10 +330,8 @@
         }
         
         .menu-item-content {
-            padding: clamp(15px, 3vw, 20px);
+            padding: 20px;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
         
         .menu-item-header {
@@ -412,47 +339,39 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 10px;
-            flex-wrap: wrap;
-            gap: 10px;
         }
         
         .menu-item-header h3 {
-            font-size: clamp(16px, 3vw, 18px);
+            font-size: 18px;
             color: var(--primary-color);
             margin: 0;
-            flex: 1;
-            min-width: 200px;
         }
         
         .menu-item-price {
-            font-size: clamp(16px, 3vw, 18px);
+            font-size: 18px;
             color: var(--secondary-color);
             font-weight: 700;
-            white-space: nowrap;
+            margin-left: 15px;
         }
         
         .menu-item-desc {
             color: var(--text-light);
-            font-size: clamp(13px, 2vw, 14px);
-            margin-bottom: clamp(8px, 2vw, 10px);
-            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 10px;
         }
         
         .menu-item-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-top: auto;
-            padding-top: 10px;
+            gap: 8px;
         }
         
         .menu-tag {
-            font-size: clamp(10px, 1.8vw, 11px);
+            font-size: 11px;
             padding: 3px 8px;
             border-radius: 3px;
             background: var(--light-color);
             color: var(--text-light);
-            white-space: nowrap;
         }
         
         .menu-tag.halal {
@@ -470,11 +389,6 @@
             color: #43a047;
         }
         
-        .menu-tag.vegan {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-        
         .menu-tag.recommended {
             background: #fff3e0;
             color: #ef6c00;
@@ -482,56 +396,41 @@
         
         /* Restaurant Info */
         .restaurant-info {
-            padding: clamp(50px, 8vw, 100px) 0;
+            padding: 100px 0;
             background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
         }
         
         .restaurant-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(30px, 6vw, 50px);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
             align-items: center;
         }
         
         .restaurant-text h2 {
-            font-size: clamp(28px, 6vw, 36px);
+            font-size: 36px;
             color: var(--primary-color);
-            margin-bottom: clamp(15px, 3vw, 20px);
-        }
-        
-        .restaurant-text p {
-            font-size: clamp(14px, 2vw, 16px);
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 20px;
         }
         
         .restaurant-hours {
-            margin-top: clamp(20px, 4vw, 30px);
+            margin-top: 30px;
             background: white;
-            padding: clamp(20px, 3vw, 25px);
+            padding: 25px;
             border-radius: 8px;
             box-shadow: var(--shadow);
         }
         
         .restaurant-hours h3 {
             color: var(--primary-color);
-            margin-bottom: clamp(12px, 3vw, 15px);
-            font-size: clamp(18px, 4vw, 20px);
+            margin-bottom: 15px;
         }
         
         .hours-item {
             display: flex;
             justify-content: space-between;
-            padding: clamp(6px, 1.5vw, 8px) 0;
+            padding: 8px 0;
             border-bottom: 1px solid #eee;
-            font-size: clamp(14px, 2vw, 16px);
-        }
-        
-        .restaurant-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
         }
         
         .restaurant-image {
@@ -544,27 +443,25 @@
             width: 100%;
             height: auto;
             display: block;
-            aspect-ratio: 4/3;
-            object-fit: cover;
         }
         
-        /* Footer */
+        /* Footer - Same as main.html */
         footer {
             background: var(--gradient-primary);
             color: var(--light-color);
-            padding: clamp(30px, 6vw, 40px) 0 clamp(15px, 3vw, 20px);
+            padding: 40px 0 20px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
-            gap: clamp(25px, 5vw, 40px);
-            margin-bottom: clamp(20px, 4vw, 30px);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
         }
         
         .footer-column h3 {
-            font-size: clamp(18px, 4vw, 22px);
-            margin-bottom: clamp(15px, 3vw, 20px);
+            font-size: 22px;
+            margin-bottom: 20px;
             color: var(--accent-color);
         }
         
@@ -573,38 +470,35 @@
         }
         
         .footer-column ul li {
-            margin-bottom: clamp(8px, 2vw, 10px);
-            font-size: clamp(14px, 2vw, 16px);
+            margin-bottom: 10px;
         }
         
         .footer-column ul li a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
-            display: inline-block;
         }
         
         .footer-column ul li a:hover {
             color: var(--accent-color);
-            transform: translateX(5px);
+            padding-left: 5px;
         }
         
         .footer-column p {
             color: rgba(255, 255, 255, 0.8);
-            font-size: clamp(14px, 2vw, 16px);
         }
         
         .social-icons {
             display: flex;
-            margin-top: clamp(15px, 3vw, 20px);
+            margin-top: 20px;
         }
         
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: clamp(35px, 8vw, 40px);
-            height: clamp(35px, 8vw, 40px);
+            width: 40px;
+            height: 40px;
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--light-color);
             border-radius: 50%;
@@ -620,30 +514,20 @@
         
         .copyright {
             text-align: center;
-            padding-top: clamp(15px, 3vw, 20px);
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: clamp(12px, 2vw, 14px);
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
         }
         
-        /* Responsive Breakpoints */
-        @media (max-width: 1200px) {
-            .container {
-                width: 95%;
-            }
-        }
-        
+        /* Responsive Styles */
         @media (max-width: 992px) {
             .page-hero h1 {
-                font-size: clamp(36px, 5vw, 42px);
+                font-size: 40px;
             }
             
             .section-title h2 {
-                font-size: clamp(32px, 5vw, 36px);
-            }
-            
-            .restaurant-text h2 {
-                font-size: clamp(32px, 5vw, 36px);
+                font-size: 35px;
             }
         }
         
@@ -654,58 +538,30 @@
             
             nav {
                 position: fixed;
-                top: 0;
+                top: 70px;
                 left: 0;
                 width: 100%;
-                height: 100vh;
                 background-color: var(--primary-color);
-                padding-top: 80px;
-                transform: translateX(-100%);
+                padding: 20px;
+                transform: translateY(-100%);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.4s ease;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                overflow-y: auto;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
             
             nav.active {
-                transform: translateX(0);
+                transform: translateY(0);
                 opacity: 1;
                 visibility: visible;
             }
             
             nav ul {
                 flex-direction: column;
-                padding: 20px;
-                align-items: center;
             }
             
             nav ul li {
-                margin: 0 0 25px 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav ul li a {
-                font-size: 18px;
-                padding: 10px 0;
-                display: block;
-            }
-            
-            .page-hero {
-                padding-top: 70px;
-                height: 50vh;
-                min-height: 350px;
-            }
-            
-            .menu-categories {
-                top: 70px;
-                padding: 10px 0;
-            }
-            
-            .categories-container {
-                padding-bottom: 5px;
+                margin: 0 0 15px 0;
             }
             
             .menu-items {
@@ -716,213 +572,56 @@
                 grid-template-columns: 1fr;
             }
             
-            .restaurant-buttons {
-                flex-direction: column;
-                align-items: center;
+            .page-hero {
+                padding-top: 80px;
             }
             
-            .restaurant-buttons .btn {
-                width: 100%;
-                max-width: 300px;
+            .menu-categories {
+                top: 80px;
             }
         }
         
         @media (max-width: 576px) {
-            .container {
-                width: 100%;
-                padding: 0 20px;
-            }
-            
-            .page-hero {
-                padding-top: 60px;
-                height: 45vh;
-                min-height: 300px;
-            }
-            
             .page-hero h1 {
-                font-size: clamp(24px, 5vw, 32px);
-            }
-            
-            .page-hero p {
-                font-size: clamp(14px, 2.2vw, 16px);
+                font-size: 32px;
             }
             
             .section-title h2 {
-                font-size: clamp(24px, 5vw, 28px);
-            }
-            
-            .section-title p {
-                font-size: clamp(13px, 2vw, 15px);
-            }
-            
-            .menu-category-title {
-                font-size: clamp(20px, 4vw, 24px);
-            }
-            
-            .menu-item-header h3 {
-                min-width: unset;
-                width: 100%;
-            }
-            
-            .menu-item-price {
-                margin-left: auto;
-            }
-            
-            .hours-item {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .hours-item span:last-child {
-                font-weight: 600;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 18px;
-            }
-            
-            .page-hero h1 {
-                font-size: 22px;
-            }
-            
-            .page-hero p {
-                font-size: 14px;
-            }
-            
-            .btn {
-                padding: 12px 20px;
-                font-size: 14px;
-            }
-            
-            .menu-item-img {
-                height: 120px;
-            }
-            
-            .category-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            
-            .menu-item-header h3 {
-                font-size: 16px;
-            }
-            
-            .menu-item-price {
-                font-size: 16px;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .page-hero h1 {
-                font-size: 20px;
-            }
-            
-            .page-hero p {
-                font-size: 13px;
-            }
-            
-            .btn {
-                padding: 10px 15px;
-                font-size: 13px;
+                font-size: 28px;
             }
             
             .menu-item {
-                padding: 0;
+                flex-direction: column;
             }
             
-            .menu-item-content {
-                padding: 15px;
+            .menu-item-img {
+                width: 100%;
+                height: 200px;
             }
             
-            .footer-column h3 {
-                font-size: 16px;
+            .categories-container {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
             }
-        }
-        
-        /* Landscape orientation improvements */
-        @media (orientation: landscape) and (max-height: 600px) {
+            
             .page-hero {
-                height: 100vh;
-                padding-top: 60px;
-                min-height: 400px;
+                padding-top: 70px;
+                height: 50vh;
             }
             
-            .page-hero-content {
-                padding: 10px;
-            }
-            
-            .page-hero h1 {
-                font-size: clamp(24px, 5vw, 32px);
-                margin-bottom: 10px;
-            }
-            
-            .page-hero p {
-                margin-bottom: 20px;
-                font-size: clamp(12px, 2vw, 14px);
+            .logo {
+                font-size: 22px;
             }
             
             .menu-categories {
-                top: 60px;
-            }
-        }
-        
-        /* High DPI screens */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .menu-item-img img,
-            .restaurant-image img {
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-            }
-        }
-        
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #121212;
-                color: #f5f5f5;
-            }
-            
-            .menu-section,
-            .restaurant-hours {
-                background-color: #1e1e1e;
-            }
-            
-            .menu-item,
-            .feature-item,
-            .stat-item {
-                background-color: #1e1e1e;
-                color: #f5f5f5;
-            }
-            
-            .menu-item-desc,
-            .section-title p,
-            .restaurant-text p {
-                color: #cccccc;
-            }
-            
-            .menu-category-title,
-            .section-title h2 {
-                color: #f5f5f5;
+                top: 70px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    
-    <!-- Header & Navigation -->
+    <!-- Header & Navigation - Same as main.html -->
     <header id="header">
         <div class="container header-container">
             <a href="main.html" class="logo">THE NOIRÉ <span>LUXE</span> HOTEL</a>
@@ -960,11 +659,11 @@
     <section class="menu-categories">
         <div class="container">
             <div class="categories-container">
-                <button class="category-btn active" data-category="starters">Starters</button>
-                <button class="category-btn" data-category="seafood">Seafood</button>
-                <button class="category-btn" data-category="meat">Grill & Meat</button>
-                <button class="category-btn" data-category="desserts">Desserts</button>
-                <button class="category-btn" data-category="mocktails">Mocktails</button>
+                <button class="category-btn active" data-category="starters">Starters & Appetizers</button>
+                <button class="category-btn" data-category="seafood">Seafood & Ocean Delights</button>
+                <button class="category-btn" data-category="meat">Grill & Meat Selections</button>
+                <button class="category-btn" data-category="desserts">Desserts & Sweet Indulgences</button>
+                <button class="category-btn" data-category="mocktails">Signature Mocktails</button>
             </div>
         </div>
     </section>
@@ -1323,8 +1022,8 @@
                         </div>
                     </div>
                     
-                    <div class="restaurant-buttons">
-                        <a href="tel:+60821234567" class="btn"><i class="fas fa-phone"></i> Make Reservation</a>
+                    <div style="margin-top: 30px;">
+                        <a href="tel:+60821234567" class="btn" style="margin-right: 15px;"><i class="fas fa-phone"></i> Make Reservation</a>
                         <a href="main.html#location" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Find Us</a>
                     </div>
                 </div>
@@ -1336,7 +1035,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - Same as main.html -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -1392,42 +1091,26 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Toggle - Same as main.html
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mainNav = document.getElementById('main-nav');
-        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
         
-        function toggleMobileMenu() {
+        mobileMenuBtn.addEventListener('click', () => {
             mainNav.classList.toggle('active');
-            mobileNavOverlay.classList.toggle('active');
-            
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mainNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden';
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
-        }
-        
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        mobileNavOverlay.addEventListener('click', toggleMobileMenu);
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+            mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+        });
         
         // Close mobile menu when clicking a link
         document.querySelectorAll('#main-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('active');
-                mobileNavOverlay.classList.remove('active');
                 mobileMenuBtn.querySelector('i').classList.remove('fa-times');
                 mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = '';
             });
         });
         
-        // Header scroll effect
+        // Header scroll effect - Same as main.html
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 100) {
@@ -1453,14 +1136,8 @@
                 // Scroll to the selected category
                 const targetSection = document.getElementById(category);
                 if (targetSection) {
-                    // Calculate header + menu categories height for offset
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const menuCategoriesHeight = document.querySelector('.menu-categories').offsetHeight;
-                    const offset = headerHeight + menuCategoriesHeight + 20;
-                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
-                    
                     window.scrollTo({
-                        top: targetPosition,
+                        top: targetSection.offsetTop - 150,
                         behavior: 'smooth'
                     });
                 }
@@ -1468,137 +1145,41 @@
         });
         
         // Highlight active category on scroll
-        let isScrolling;
         window.addEventListener('scroll', () => {
-            // Clear our timeout throughout the scroll
-            window.clearTimeout(isScrolling);
+            let current = '';
             
-            // Set a timeout to run after scrolling ends
-            isScrolling = setTimeout(() => {
-                let current = '';
+            menuSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
                 
-                menuSections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    // Calculate offset
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const menuCategoriesHeight = document.querySelector('.menu-categories').offsetHeight;
-                    const offset = headerHeight + menuCategoriesHeight + 100;
-                    
-                    if (window.pageYOffset >= sectionTop - offset) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                categoryButtons.forEach(button => {
-                    button.classList.remove('active');
-                    if (button.getAttribute('data-category') === current) {
-                        button.classList.add('active');
-                    }
-                });
-            }, 100);
-        }, false);
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            categoryButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-category') === current) {
+                    button.classList.add('active');
+                }
+            });
+        });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId === '#home') return;
+                if(targetId === '#') return;
                 
-                // Check if link points to a section on the same page
                 const targetElement = document.querySelector(targetId);
-                if (targetElement && !this.getAttribute('target')) {
+                if(targetElement) {
                     e.preventDefault();
-                    
-                    // Close mobile menu if open
-                    mainNav.classList.remove('active');
-                    mobileNavOverlay.classList.remove('active');
-                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                    document.body.style.overflow = '';
-                    
-                    // Calculate header height for offset
-                    const headerHeight = document.getElementById('header').offsetHeight;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
                     window.scrollTo({
-                        top: targetPosition,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            // If window is resized to desktop size and mobile menu is open, close it
-            if (window.innerWidth > 768) {
-                mainNav.classList.remove('active');
-                mobileNavOverlay.classList.remove('active');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = '';
-            }
-            
-            // Update category button text for mobile
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            if (window.innerWidth < 480) {
-                categoryButtons.forEach(btn => {
-                    const text = btn.textContent;
-                    if (text === 'Starters & Appetizers') btn.textContent = 'Starters';
-                    if (text === 'Seafood & Ocean Delights') btn.textContent = 'Seafood';
-                    if (text === 'Grill & Meat Selections') btn.textContent = 'Grill & Meat';
-                    if (text === 'Desserts & Sweet Indulgences') btn.textContent = 'Desserts';
-                    if (text === 'Signature Mocktails') btn.textContent = 'Mocktails';
-                });
-            } else {
-                categoryButtons.forEach(btn => {
-                    const dataCategory = btn.getAttribute('data-category');
-                    const texts = {
-                        'starters': 'Starters & Appetizers',
-                        'seafood': 'Seafood & Ocean Delights',
-                        'meat': 'Grill & Meat Selections',
-                        'desserts': 'Desserts & Sweet Indulgences',
-                        'mocktails': 'Signature Mocktails'
-                    };
-                    if (texts[dataCategory]) btn.textContent = texts[dataCategory];
-                });
-            }
-        });
-        
-        // Touch-friendly improvements
-        document.addEventListener('touchstart', function() {}, {passive: true});
-        
-        // Prevent zoom on double-tap for mobile
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add scrolled class if page loads with scroll
-            if (window.scrollY > 100) {
-                document.getElementById('header').classList.add('scrolled');
-            }
-            
-            // Initialize category button text based on screen size
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            if (window.innerWidth < 480) {
-                categoryButtons.forEach(btn => {
-                    const text = btn.textContent;
-                    if (text === 'Starters & Appetizers') btn.textContent = 'Starters';
-                    if (text === 'Seafood & Ocean Delights') btn.textContent = 'Seafood';
-                    if (text === 'Grill & Meat Selections') btn.textContent = 'Grill & Meat';
-                    if (text === 'Desserts & Sweet Indulgences') btn.textContent = 'Desserts';
-                    if (text === 'Signature Mocktails') btn.textContent = 'Mocktails';
-                });
-            }
         });
     </script>
 </body>
